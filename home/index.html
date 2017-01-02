@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="icon" href="Cesium/favicon.ico">
+
+    <title>Orbit Viewer</title>
+<!--    <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+    <script src="Cesium/Build/Cesium/Cesium.js"></script>
+    <script type="text/javascript" src="Cesium/Apps/Sandcastle/Sandcastle-header.js"></script>
+    <style>
+      @import url(Cesium/Build/Cesium/Widgets/widgets.css);
+      @import url(Cesium/Apps/Sandcastle/templates/bucket.css);
+      html, body, #cesiumContainer {
+          width: 100%; height: 100%; margin: 20; padding: 20;
+          /*width: 640px; height: 640px; margin: 0; padding: 0;*/
+      }
+      #viewChanged {
+        display: none;
+        background-color: red;
+        color: white;
+    }
+</style>
+
+
+</head>
+
+
+<body>
+    <div id="cesiumContainer" class="fullSize"></div>
+    <div id="loadingOverlay"><h1>Loading...</h1></div>
+    <div id="toolbar">
+<!--        <div>Please use Google Chrome with a 3D supported video card (such as Nvidia, AMD, and Intel)</div> -->
+    </div>
+
+    <script>
+        Cesium.BingMapsApi.defaultKey = "AtSeEYa-u_wtCMgjOoVHTm7IOYLaj_Fs-UF4i_ABvkSZfqisRCyFsgHZC8b9fqaQ"
+//        var viewer = new Cesium.Viewer('cesiumContainer',{'fullscreenButton':true, 'shadows': true, 'terrainShadows': Cesium.ShadowMode.ENABLED});
+        var viewer = new Cesium.Viewer('cesiumContainer');
+        var scene = viewer.scene;
+        var clock = viewer.clock;
+
+
+        function flyToLocation() {
+            Sandcastle.declare(flyToLocation);
+
+            scene.preRender.removeEventListener(icrf);
+
+    // Create callback for browser's geolocation
+            function fly(position) {
+                viewer.camera.flyTo({
+                    destination : Cesium.Cartesian3.fromDegrees(position.coords.longitude, position.coords.latitude, 1000.0)
+                });
+            }
+    // Ask browser for location, and fly there.
+            navigator.geolocation.getCurrentPosition(fly);
+        }
+
+
+        function icrf(scene, time) {
+            if (scene.mode !== Cesium.SceneMode.SCENE3D) {
+                return;
+            }
+            var icrfToFixed = Cesium.Transforms.computeIcrfToFixedMatrix(time);
+            if (Cesium.defined(icrfToFixed)) {
+                var camera = viewer.camera;
+                var offset = Cesium.Cartesian3.clone(camera.position);
+                var transform = Cesium.Matrix4.fromRotationTranslation(icrfToFixed);
+                camera.lookAtTransform(transform, offset);
+            }
+        }
+
+
+        function viewInICRF() {
+//            Sandcastle.declare(viewInICRF);
+//            viewer.camera.flyHome(0);
+
+            clock.multiplier = 0.5 * 60 * 60;
+            scene.preRender.addEventListener(icrf);
+//            scene.globe.enableLighting = true;
+        }
+
+
+        function resetToFixed() {
+//            Sandcastle.declare(resetToFixed);
+//            viewer.camera.flyHome(0);
+
+            clock.multiplier = 0.5 * 60 * 60;
+            scene.preRender.removeEventListener(icrf);
+//            scene.globe.enableLighting = true;
+        }
+
+
+        Sandcastle.addToolbarButton('Shadow Switch', function() {
+            scene.globe.enableLighting = !scene.globe.enableLighting;
+        });
+
+        Sandcastle.addToolbarButton('View from Space (ICRF)', function() {
+            viewInICRF();
+        });
+
+        Sandcastle.addToolbarButton('Earth-Fixed View (ITRF)', function() {
+            resetToFixed();
+        });
+
+//        Sandcastle.addToolbarButton('To My Location', function() {
+//            flyToLocation();
+//        });
+
+        Sandcastle.addToolbarButton('LEO', function() {
+            viewer.dataSources.add(Cesium.CzmlDataSource.load('czml/LEO.czml'));
+	    
+//            viewer.camera.flyHome(0);
+        });
+
+        Sandcastle.addToolbarButton('ISS', function() {
+            viewer.dataSources.add(Cesium.CzmlDataSource.load('czml/ISS.czml'));
+//            viewer.camera.flyHome(0);
+        });
+
+        Sandcastle.addToolbarButton('GPS', function() {
+            viewer.dataSources.add(Cesium.CzmlDataSource.load('czml/GPS.czml'));
+//            viewer.camera.flyHome(0);
+        });
+
+        Sandcastle.addToolbarButton('DirecTV', function() {
+            viewer.dataSources.add(Cesium.CzmlDataSource.load('czml/DirecTV.czml'));
+//            viewer.camera.flyHome(0);
+        });
+
+
+        Sandcastle.addToolbarButton('Remove All', function() {
+            viewer.dataSources.removeAll(); 
+//            viewer.dataSources.add(Cesium.CzmlDataSource.load('czml/ISS.czml'));
+//            viewer.camera.flyHome(0);
+        });
+
+        // Sandcastle.addToolbarButton('Full Screen', function(){
+        //     Cesium.Fullscreen.requestFullscreen(viewer.scene.canvas);
+        // });
+
+
+     // <button type="button" onclick="viewer.dataSources.add(Cesium.CzmlDataSource.load('czml/simple.czml'));">Try it</button>
+
+
+    // Sandcastle.addDefaultToolbarButton('Satellites', function() {
+    // viewer.dataSources.add(Cesium.CzmlDataSource.load('czml/simple.czml'));
+
+    // viewer.camera.flyHome(0);
+// });
+    // viewer.canvas.height = 1000;
+    // Cesium.Fullscreen.requestFullscreen(viewer.canvas);
+    // viewer.canvas
+    // Cesium.Fullscreen.enabled;
+</script>
+
+
+
+</body>
+</html>
