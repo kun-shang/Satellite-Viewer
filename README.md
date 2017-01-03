@@ -10,10 +10,10 @@ Several options are available to get started quickly:
 
 ## Creator
 
-[Satellite Viewer] (http://go.osu.edu/orbit) was created by and is maintained by **[Kun Shang](shang.34@osu.edu)**.
+[Satellite Viewer] (http://go.osu.edu/orbit) was created by and is maintained by [Kun Shang](shang.34@osu.edu).
 
 * https://github.com/kun-shang/
 
 ## Copyright and License
 
-Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-agency/blob/gh-pages/LICENSE) license.
+Copyright 2016-2017 [geodeticscience.org] (http://geodeticscience.org). Code released under the [MIT](https://github.com/kun-shang/SatelliteViewer/blob/master/LICENSE.md) license.
