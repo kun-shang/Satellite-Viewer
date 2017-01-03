@@ -10,7 +10,7 @@ Several options are available to get started quickly:
 
 ## Creator
 
-[Satellite Viewer] (http://go.osu.edu/orbit) was created by and is maintained by [Kun Shang](shang.34@osu.edu).
+[Satellite Viewer] (http://go.osu.edu/orbit) was created by and is maintained by Kun Shang.
 
 * https://github.com/kun-shang/
 
