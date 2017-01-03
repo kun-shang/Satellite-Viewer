@@ -1,36 +1,18 @@
-# [Start Bootstrap](http://startbootstrap.com/) - [Agency](http://startbootstrap.com/template-overviews/agency/)
+# [Satellite Viewer](http://go.osu.edu/orbit)
 
-[Agency](http://startbootstrap.com/template-overviews/agency/) is a one page agency portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid with hover effects, full page portfolio item modals, a responsive timeline, and a working PHP contact form.
+[Satellite Viewer](http://go.osu.edu/orbit) is an interactive toolbox for satellite orbit visualization, and designed for students learning about Earth satellite orbits, including existing and proposed courses, Earth Sci. 4310: Remote Sensing in Earth Sciences, and Geodetic Sci/Earth Sci. 2310: Sensing Planet Earth, at [The Ohio State University] (https://www.osu.edu). The toolbox runs an interactive web-based software that can visualize Earth orbiting satellites and their sampling on Earth, watching from space, or fixed on a point on Earth. Using [bing] (http://www.bing.com) map (©Microsoft) and other maps, users can visualize temporal and spatial coverage of various orbiting satellites. The toolbox uses the open-source JavaScript library from [Cesium] (https://cesiumjs.org/) and a portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
 
 ## Getting Started
 
 Several options are available to get started quickly:
-* [Download the latest release on Start Bootstrap](http://startbootstrap.com/template-overviews/agency/)
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-agency.git`
+* Clone the repo: `git clone https://github.com/kun-shang/SatelliteViewer.git`
 * Fork the repo
-
-## Developing Using Source Files
-
-To use the source files, you will need to have npm installed globally along with Gulp.js. To start:
-* Run `npm install` in the root directory
-* Run `gulp dev` and edit the files as needed
-
-If you need to update the plugins included with this template, simply run the following tasks:
-* First run `npm update` to update the dependencies
-* Then run `gulp copy` to copy the new versions to their proper destinations
-
-## Bugs and Issues
-
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-agency/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/agency/).
 
 ## Creator
 
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
+[Satellite Viewer] (http://go.osu.edu/orbit) was created by and is maintained by **[Kun Shang](shang.34@osu.edu)**.
 
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
-
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
+* https://github.com/kun-shang/
 
 ## Copyright and License
 
